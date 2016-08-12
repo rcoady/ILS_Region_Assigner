@@ -5,6 +5,9 @@ from secret import api
 
 filename = raw_input("Enter a file name:")
 
+if filename == '':
+    filename = 'Leaders2016.csv'
+
 f = open(filename, 'rU')
 data = csv.reader(f)
 
