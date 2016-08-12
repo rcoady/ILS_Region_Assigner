@@ -3,7 +3,9 @@ import json
 import urllib2
 from secret import api
 
-f = open('Leaders2016.csv', 'rU')
+filename = raw_input("Enter a file name:")
+
+f = open(filename, 'rU')
 data = csv.reader(f)
 
 c = csv.writer(open("Address.csv", "wb"))
