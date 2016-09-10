@@ -6,7 +6,7 @@ from secret import api
 filename = raw_input("Enter a file name:")
 
 if filename == '':
-    filename = 'Leaders2016.csv'
+    filename = 'Alumni.csv'
 
 f = open(filename, 'rU')
 data = csv.reader(f)
@@ -14,13 +14,13 @@ data = csv.reader(f)
 c = csv.writer(open("Address.csv", "wb"))
 
 for row in data:
-    street = row[6]
-    city = row[7]
-    state = row[8]
+    primary_street = row[11]
+    primary_city = row[12]
+    primary_state = row[13]
 
-    list = [street, city, state]
+    primary_address = [primary_street, primary_city, primary_state]
 
-    full_address = ", ".join(list)
+    full_address = ", ".join(primary_address)
 
     geo_address = full_address.replace(" ", "+")
 
@@ -37,3 +37,5 @@ for row in data:
     county = county[length - 5]["short_name"]
     print county
     c.writerow([row[1], row[2], full_address, county])
+
+
