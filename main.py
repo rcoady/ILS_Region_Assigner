@@ -11,6 +11,8 @@ if filename == '':
 f = open(filename, 'rU')
 data = csv.reader(f)
 
+word = 'County'
+
 c = csv.writer(open("Address.csv", "wb"))
 
 for row in data:
@@ -30,11 +32,15 @@ for row in data:
 
     jsongeocode = json.loads(response.read())
 
-    county = jsongeocode["results"][0]["address_components"]
+    json_response = jsongeocode["results"][0]["address_components"]
 
-    length = len(county)
+    length = len(json_response)
     print full_address
-    county = county[length - 5]["short_name"]
+    county = json_response[length - 5]["short_name"]
+
+    if word not in county:
+        county = json_response[length - 4]["short_name"]
+
     print county
     c.writerow([row[1], row[2], full_address, county])
 
