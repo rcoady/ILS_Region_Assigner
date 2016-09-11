@@ -16,9 +16,15 @@ word = 'County'
 c = csv.writer(open("Address.csv", "wb"))
 
 for row in data:
-    primary_street = row[11]
-    primary_city = row[12]
-    primary_state = row[13]
+
+    if filename == 'Alumni.csv':
+        primary_street = row[11]
+        primary_city = row[12]
+        primary_state = row[13]
+    elif filename == 'Leaders2016.csv':
+        primary_street = row[6]
+        primary_city = row[7]
+        primary_state = row[8]
 
     primary_address = [primary_street, primary_city, primary_state]
 
@@ -43,5 +49,3 @@ for row in data:
 
     print county
     c.writerow([row[1], row[2], full_address, county])
-
-
